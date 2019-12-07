@@ -2,14 +2,19 @@ from typing import List
 
 
 def quicksort(nums: List[int]) -> List[int]:
-    if len(nums) < 2:
+    len_nums = len(nums)
+
+    if len_nums < 2:
         return nums
 
-    pivot = nums[0]
+    pivot_index = int(len_nums / 2)
+    pivot = nums[pivot_index]
     less: List[int] = []
     greater: List[int] = []
 
-    for n in nums[1:]:
+    for i, n in enumerate(nums):
+        if i == pivot_index:
+            continue
         _append = greater.append if n > pivot else less.append
         _append(n)
 
